@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gran Archivo de Hallownest - Enciclopedia & Codex Interactivo</title>
+    <title>Gran Archivo de Hallownest - Enciclopedia de Personajes & Codex</title>
     <style>
         :root {
             --bg-void: #030508;
@@ -15,10 +15,8 @@
             --soul-cyan: #00e5ff;
             --soul-glow: rgba(0, 229, 255, 0.45);
             --inf-orange: #ff6600;
-            --inf-glow: rgba(255, 102, 0, 0.5);
             --text-main: #e2e8f0;
             --text-dim: #8b9bb4;
-            --mask-red: #e63946;
             --dream-pink: #ff70a6;
         }
 
@@ -75,7 +73,7 @@
         }
 
         h1 {
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             color: var(--border-gold);
             text-transform: uppercase;
             letter-spacing: 6px;
@@ -90,9 +88,9 @@
             font-style: italic;
         }
 
-        /* HUD BAR SUPERIOR */
+        /* HUD BAR */
         .hud-bar {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: 1.5rem auto 0;
             padding: 1rem 2rem;
             background: var(--panel-bg);
@@ -119,9 +117,6 @@
             background: #141c2b;
             border: 2px solid var(--border-ancient);
             clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -179,14 +174,14 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: 0 auto;
             padding: 2rem 1.5rem;
             flex: 1;
             width: 100%;
         }
 
-        /* NAVEGACIÓN Y BÚSQUEDA */
+        /* PESTAÑAS */
         .nav-tabs {
             display: flex;
             justify-content: center;
@@ -217,12 +212,12 @@
 
         .search-box {
             width: 100%;
-            max-width: 600px;
-            margin: 0 auto 2rem;
+            max-width: 650px;
+            margin: 0 auto 1.5rem;
             display: block;
             background: var(--panel-bg);
             border: 1px solid var(--border-ancient);
-            padding: 0.8rem 1.4rem;
+            padding: 0.85rem 1.5rem;
             border-radius: 30px;
             color: var(--text-main);
             font-size: 0.95rem;
@@ -233,6 +228,38 @@
         .search-box:focus {
             border-color: var(--border-gold);
             box-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        /* ÍNDICE ALFABÉTICO DE PERSONAJES */
+        .alpha-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.4rem;
+            margin-bottom: 2rem;
+            padding: 0.8rem;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-ancient);
+            border-radius: 8px;
+        }
+
+        .alpha-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-dim);
+            padding: 0.35rem 0.65rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .alpha-btn:hover, .alpha-btn.active {
+            color: var(--border-gold);
+            border-color: var(--border-gold);
+            background: rgba(197, 160, 89, 0.12);
         }
 
         .tab-content {
@@ -251,7 +278,7 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
@@ -275,12 +302,32 @@
             background: var(--panel-hover);
         }
 
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.4rem;
+        }
+
         .card-tag {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--soul-cyan);
-            margin-bottom: 0.4rem;
+        }
+
+        .letter-badge {
+            background: rgba(197, 160, 89, 0.15);
+            color: var(--border-gold);
+            border: 1px solid var(--border-gold);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
         }
 
         .card h3 {
@@ -292,7 +339,7 @@
         .card p {
             color: var(--text-dim);
             font-size: 0.88rem;
-            line-height: 1.5;
+            line-height: 1.55;
         }
 
         .dream-quote {
@@ -394,7 +441,7 @@
             border: 2px solid var(--border-gold);
             border-radius: 8px;
             width: 100%;
-            max-width: 700px;
+            max-width: 720px;
             max-height: 85vh;
             overflow-y: auto;
             padding: 2.2rem;
@@ -415,6 +462,17 @@
 
         .close-btn:hover {
             color: var(--border-gold);
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--border-ancient);
+            font-size: 0.85rem;
+            color: var(--text-dim);
         }
 
         footer {
@@ -458,16 +516,18 @@
 
         <!-- NAVEGACIÓN PRINCIPAL -->
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('characters')">Personajes y Enemigos</button>
-            <button class="tab-btn" onclick="switchTab('map')">Mapa de Hallownest</button>
-            <button class="tab-btn" onclick="switchTab('charms')">Amuletos (1-40)</button>
-            <button class="tab-btn" onclick="switchTab('lore')">Lore y Secretos</button>
+            <button class="tab-btn active" onclick="switchTab('characters', this)">Personajes de Hallownest</button>
+            <button class="tab-btn" onclick="switchTab('map', this)">Mapa de Hallownest</button>
+            <button class="tab-btn" onclick="switchTab('charms', this)">Amuletos (1-40)</button>
+            <button class="tab-btn" onclick="switchTab('lore', this)">Lore y Secretos</button>
         </div>
 
-        <input type="text" class="search-box" id="globalSearch" placeholder="Buscar personaje, enemigo, jefe, amuleto o región..." oninput="filterEverything()">
+        <input type="text" class="search-box" id="globalSearch" placeholder="Buscar personaje por nombre, ubicación o lore..." oninput="filterEverything()">
 
-        <!-- PESTAÑA 1: PERSONAJES Y ENEMIGOS -->
+        <!-- PESTAÑA 1: APARTADO EXCLUSIVO DE PERSONAJES -->
         <div id="tab-characters" class="tab-content active">
+            <div class="alpha-bar" id="alphaBar"></div>
+            <p id="charCountInfo" style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 1.2rem; text-align: right;"></p>
             <div class="grid" id="charactersGrid"></div>
         </div>
 
@@ -478,59 +538,49 @@
                 <p style="color: var(--text-dim); font-size: 0.85rem; margin-bottom: 1.5rem;">Haz clic en cualquier región del mapa para abrir sus registros y conexiones.</p>
                 
                 <svg class="svg-map" viewBox="0 0 800 500">
-                    <!-- Conexiones / Líneas de túneles -->
                     <path d="M 400,60 L 400,120 M 400,120 L 250,180 M 400,120 L 550,180 M 400,120 L 400,240 M 400,240 L 250,280 M 400,240 L 550,280 M 400,240 L 400,340 M 400,340 L 250,380 M 400,340 L 400,430" stroke="#1e293b" stroke-width="3" fill="none" />
 
-                    <!-- Región 1: Boca Sucia -->
-                    <g class="map-region-node" onclick="openModal('Boca Sucia (Dirtmouth)', 'Superficie', 'El pueblo moribundo situado en la superficie sobre las ruinas de Hallownest. Sus luces parpadean tenuemente para recibir a los viajeros.<br><br><strong>Conexiones:</strong> Cruces Olvidados.<br><strong>Personajes:</strong> Anciano Bug, Cornifer, Iselda, Sly, Bretta, Zote.')">
+                    <g class="map-region-node" onclick="openModal('Boca Sucia (Dirtmouth)', 'Superficie', 'Superficie de Hallownest', 'El pueblo moribundo situado en la superficie sobre las ruinas de Hallownest. Sus luces parpadean tenuemente para recibir a los viajeros.<br><br><strong>Conexiones:</strong> Cruces Olvidados.<br><strong>Habitantes:</strong> Viejo Insecto, Cornifer, Iselda, Sly, Bretta, Zote, Nymm, Confesor Jiji.')">
                         <rect x="330" y="30" width="140" height="40" rx="6" fill="#0c111a" stroke="#232d3f"/>
                         <text x="400" y="55" fill="#c5a059" font-size="12" text-anchor="middle">Boca Sucia</text>
                     </g>
 
-                    <!-- Región 2: Cruces Olvidados -->
-                    <g class="map-region-node" onclick="openModal('Cruces Olvidados', 'Túneles Superiores', 'Antiguos túneles de paso hoy infectados por las esporas del Destello.<br><br><strong>Conexiones:</strong> Boca Sucia, Senda Verde, Ciudad de Lágrimas, Cumbre de Cristales.<br><strong>Jefes:</strong> Falso Caballero, Madre Gruz.')">
+                    <g class="map-region-node" onclick="openModal('Cruces Olvidados', 'Túneles Superiores', 'Subsuelo Superior', 'Antiguos túneles de paso hoy infectados por las esporas del Destello.<br><br><strong>Conexiones:</strong> Boca Sucia, Senda Verde, Ciudad de Lágrimas, Cumbre de Cristales.<br><strong>Habitantes:</strong> Myla, Padre Larva, Salubra, Chamán Caracol.')">
                         <rect x="320" y="100" width="160" height="40" rx="6" fill="#0c111a" stroke="#232d3f"/>
                         <text x="400" y="125" fill="#c5a059" font-size="12" text-anchor="middle">Cruces Olvidados</text>
                     </g>
 
-                    <!-- Región 3: Senda Verde -->
-                    <g class="map-region-node" onclick="openModal('Senda Verde (Greenpath)', 'Naturaleza', 'Frondosos bosques subterráneos llenos de vegetación y musgo.<br><br><strong>Conexiones:</strong> Cruces Olvidados, Cañón de Niebla.<br><strong>Jefes:</strong> Hornet, Cazador Mascarado.')">
+                    <g class="map-region-node" onclick="openModal('Senda Verde (Greenpath)', 'Naturaleza', 'Oeste de Hallownest', 'Frondosos bosques subterráneos llenos de vegetación y musgo gobernados en sueños por Unn.<br><br><strong>Conexiones:</strong> Cruces Olvidados, Cañón de Niebla.<br><strong>Habitantes:</strong> Hornet, El Cazador, Maestro de Aguijones Sheo, Unn.')">
                         <rect x="170" y="160" width="140" height="40" rx="6" fill="#0c111a" stroke="#232d3f"/>
                         <text x="240" y="185" fill="#00e5ff" font-size="12" text-anchor="middle">Senda Verde</text>
                     </g>
 
-                    <!-- Región 4: Cumbre de los Cristales -->
-                    <g class="map-region-node" onclick="openModal('Cumbre de Cristales', 'Mina', 'Mina abandonada llena de cristales rosados energetizados.<br><br><strong>Conexiones:</strong> Cruces Olvidados, Tierras del Reposo.<br><strong>Jefes:</strong> Guardián del Cristal.')">
+                    <g class="map-region-node" onclick="openModal('Cumbre de Cristales', 'Mina', 'Noreste', 'Mina abandonada llena de cristales rosados energetizados.<br><br><strong>Conexiones:</strong> Cruces Olvidados, Tierras del Reposo.<br><strong>Habitantes:</strong> Quirrel (de paso), Guardián del Cristal.')">
                         <rect x="490" y="160" width="160" height="40" rx="6" fill="#0c111a" stroke="#232d3f"/>
                         <text x="570" y="185" fill="#ff70a6" font-size="12" text-anchor="middle">Cumbre Cristales</text>
                     </g>
 
-                    <!-- Región 5: Ciudad de Lágrimas -->
-                    <g class="map-region-node" onclick="openModal('Ciudad de Lágrimas', 'Capital Real', 'La majestuosa capital de Hallownest donde cae una lluvia incesante proveniente del Lago Azul.<br><br><strong>Conexiones:</strong> Cruces Olvidados, Cuenca Antigua, Real Alcantarillado.<br><strong>Jefes:</strong> Maestro de Almas, Caballero Vigía.')">
+                    <g class="map-region-node" onclick="openModal('Ciudad de Lágrimas', 'Capital Real', 'Centro del Reino', 'La majestuosa capital de Hallownest donde cae una lluvia incesante proveniente del Lago Azul.<br><br><strong>Conexiones:</strong> Cruces Olvidados, Cuenca Antigua, Canales Reales.<br><strong>Habitantes:</strong> Lemm, Forjaguijones, Emilitia eterna.')">
                         <rect x="310" y="220" width="180" height="40" rx="6" fill="#0c111a" stroke="#232d3f"/>
                         <text x="400" y="245" fill="#c5a059" font-size="12" text-anchor="middle">Ciudad de Lágrimas</text>
                     </g>
 
-                    <!-- Región 6: Nido Profundo -->
-                    <g class="map-region-node" onclick="openModal('Nido Profundo (Deepnest)', 'Inframundo', 'Laberinto oscuro y claustrofóbico habitado por la Tribu de Arañas.<br><br><strong>Conexiones:</strong> Desperdicios Fúngicos, Cuenca Antigua.<br><strong>Jefes:</strong> Nosk, Herrah la Bestia.')">
+                    <g class="map-region-node" onclick="openModal('Nido Profundo (Deepnest)', 'Inframundo', 'Suroeste Profundo', 'Laberinto oscuro y claustrofóbico habitado por la Tribu de Arañas.<br><br><strong>Conexiones:</strong> Desperdicios Fúngicos, Cuenca Antigua.<br><strong>Habitantes:</strong> Fabricante de máscaras, Matrona, Herrah la Bestia.')">
                         <rect x="170" y="260" width="140" height="40" rx="6" fill="#0c111a" stroke="#232d3f"/>
                         <text x="240" y="285" fill="#8b9bb4" font-size="12" text-anchor="middle">Nido Profundo</text>
                     </g>
 
-                    <!-- Región 7: Reino del Límite -->
-                    <g class="map-region-node" onclick="openModal('Límite del Reino', 'Frontera', 'Bordes calcinados de Hallownest donde cae la ceniza del cadáver del Wyrm.<br><br><strong>Conexiones:</strong> Ciudad de Lágrimas, La Colmena.<br><strong>Jefes:</strong> Hornet (2do combate), Coliseo de los Sensatos.')">
+                    <g class="map-region-node" onclick="openModal('Límite del Reino', 'Frontera', 'Extremo Este', 'Bordes calcinados de Hallownest donde cae la ceniza del cadáver del Wyrm.<br><br><strong>Conexiones:</strong> Ciudad de Lágrimas, La Colmena.<br><strong>Habitantes:</strong> Bardoon, Maestro de Aguijones Oro, Pequeño Insensato.')">
                         <rect x="490" y="260" width="150" height="40" rx="6" fill="#0c111a" stroke="#232d3f"/>
                         <text x="565" y="285" fill="#c5a059" font-size="12" text-anchor="middle">Límite del Reino</text>
                     </g>
 
-                    <!-- Región 8: Cuenca Antigua -->
-                    <g class="map-region-node" onclick="openModal('Cuenca Antigua', 'Profundidades', 'Las cavernas inferiores desiertas bajo la Ciudad de Lágrimas.<br><br><strong>Conexiones:</strong> Ciudad de Lágrimas, El Abismo, Palacio Blanco.<br><strong>Jefes:</strong> Vasija Rota.')">
+                    <g class="map-region-node" onclick="openModal('Cuenca Antigua', 'Profundidades', 'Subsuelo Profundo', 'Las cavernas inferiores desiertas bajo la Ciudad de Lágrimas.<br><br><strong>Conexiones:</strong> Ciudad de Lágrimas, El Abismo, Palacio Blanco.<br><strong>Habitantes:</strong> Cloth (en tránsito), Vasija Rota.')">
                         <rect x="320" y="320" width="160" height="40" rx="6" fill="#0c111a" stroke="#232d3f"/>
                         <text x="400" y="345" fill="#c5a059" font-size="12" text-anchor="middle">Cuenca Antigua</text>
                     </g>
 
-                    <!-- Región 9: El Abismo -->
-                    <g class="map-region-node" onclick="openModal('El Abismo (The Abyss)', 'Origen del Vacío', 'La zona más profunda de Hallownest, cuna del Vacío y lugar donde el Rey Pálido creó a los miles de recipientes fallidos.<br><br><strong>Artefactos:</strong> Capa de Sombra, Manto de Monarca, Corazón del Vacío.')">
+                    <g class="map-region-node" onclick="openModal('El Abismo (The Abyss)', 'Origen del Vacío', 'Fondo del Mundo', 'La zona más profunda de Hallownest, cuna del Vacío y lugar donde el Rey Pálido creó a los miles de recipientes fallidos.<br><br><strong>Artefactos:</strong> Capa de Sombra, Manto de Monarca, Corazón del Vacío.')">
                         <rect x="330" y="410" width="140" height="40" rx="6" fill="#000000" stroke="#00e5ff"/>
                         <text x="400" y="435" fill="#00e5ff" font-size="12" text-anchor="middle">El Abismo</text>
                     </g>
@@ -559,13 +609,14 @@
         <div class="modal-box">
             <button class="close-btn" onclick="closeModal()">&times;</button>
             <span id="modalTag" style="color: var(--soul-cyan); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Categoría</span>
-            <h2 id="modalTitle" style="color: var(--border-gold); font-size: 1.8rem; margin: 0.5rem 0 1rem;">Título</h2>
+            <h2 id="modalTitle" style="color: var(--border-gold); font-size: 1.8rem; margin: 0.4rem 0 0.8rem;">Título</h2>
+            <div class="modal-meta" id="modalMeta"></div>
             <div id="modalBody" style="line-height: 1.7; color: var(--text-main);"></div>
         </div>
     </div>
 
     <footer>
-        <p>Gran Archivo de Hallownest — Servidor Node.js Express activo | Hollow Knight Codex</p>
+        <p>Gran Archivo de Hallownest — Servidor Node.js Express activo | Enciclopedia de Personajes & Lore</p>
     </footer>
 
     <script>
@@ -586,63 +637,486 @@
             } catch(e) {}
         }
 
-        /* BASE DE DATOS DE PERSONAJES, JEFES Y ENEMIGOS */
+        /* BASE DE DATOS EXCLUSIVA DE PERSONAJES (A - W) */
         const charactersData = [
+            // A
             {
-                name: "El Caballero Vacío (Hollow Knight)",
-                category: "Jefe Principal",
-                desc: "El recipiente principal criado en el Abismo para sellar al Destello.",
-                lore: "Creado por el Rey Pálido a partir de la sustancia del Vacío. Se creía que era un recipiente puro sin mente ni voluntad, pero desarrolló un vínculo con el Rey, permitiendo que la Infección lo destruyera por dentro.",
-                dream: "...¿Padre?... ¿Madre?... La idea instilada..."
+                letter: "A",
+                name: "Alma de Acero Jinn",
+                category: "NPC / Mercader (Alma de Acero)",
+                location: "Boca Sucia (Cueva de Jiji)",
+                desc: "Misteriosa entidad metálica vinculada al Vacío que reemplaza al Confesor Jiji en el modo Alma de Acero.",
+                lore: "Un ser enigmático nacido o vinculado a antiguos maestros del Vacío. Como los portadores en modo Alma de Acero no dejan sombras al morir, Jinn ofrece comprar huevos podridos a cambio de cuantiosas sumas de Geo, reflexionando sobre la naturaleza del Rey y sus creaciones.",
+                dream: "...Ellos tienen su propio orden. Jinn no pertenece a ellos..."
             },
             {
+                letter: "A",
+                name: "Aguijón Onírico (Reliquia de las Polillas)",
+                category: "Artefacto Ancestral / Espíritu",
+                location: "Tierras del Reposo",
+                desc: "Arma etérea forjada por la tribu de las Polillas capaz de cortar el velo entre la vigilia y los sueños.",
+                lore: "Creado por la antigua tribu devota del Destello, permite leer los pensamientos ocultos de vivos y muertos, recolectar Esencia y acceder a los reinos oníricos donde residen los Soñadores y los recuerdos sellados del Rey Pálido.",
+                dream: "...La luz de los recuerdos permanece incluso cuando la mente se desvanece..."
+            },
+            // B
+            {
+                letter: "B",
+                name: "Bardoon",
+                category: "NPC Ancestral",
+                location: "Límite del Reino",
+                desc: "Una gigantesca oruga sabia que habita en las alturas heladas del Límite del Reino.",
+                lore: "Uno de los seres más antiguos que aún conservan lucidez en Hallownest. Conoce la verdadera naturaleza del Wyrm cuyo cadáver arroja cenizas sobre el Límite del Reino, y advierte sobre el peligro de sumergirse en el Vacío del Abismo.",
+                dream: "...Tan pequeño, y aun así llevas una carga tan pesada..."
+            },
+            {
+                letter: "B",
+                name: "Bretta",
+                category: "NPC / Habitante",
+                location: "Desperdicios Fúngicos / Boca Sucia",
+                desc: "Una tímida escarabajo que escribe historias románticas sobre su salvador.",
+                lore: "Rescatada por el Caballero de los peligros de los Desperdicios Fúngicos, regresa a Boca Sucia donde decora su habitación con peluches del Caballero. Sin embargo, si Zote llega al pueblo con sus historias inventadas, Bretta cambia su devoción hacia él antes de partir en busca de su propio camino.",
+                dream: "...Mi salvador blanco... ¿algún día volverá a mirarme?..."
+            },
+            {
+                letter: "B",
+                name: "Brumm",
+                category: "NPC / Músico de la Compañía",
+                location: "Nido Profundo / Boca Sucia",
+                desc: "El acordeonista de la Compañía de Grimm, cansado del ciclo eterno del ritual.",
+                lore: "Aunque sirve fielmente a Grimm tocando su acordeón, Brumm conserva fragmentos de su identidad pasada. En secreto conspira con el Caballero para destrozar la linterna de la pesadilla en los Acantilados Aulladores, liberándose así de la esclavitud del Corazón de la Pesadilla.",
+                dream: "...Siempre el mismo ritmo... siempre la misma llama..."
+            },
+            {
+                letter: "B",
+                name: "Buscador de Dioses",
+                category: "NPC / Sacerdotisa",
+                location: "Canales Reales / Hogar de Dioses",
+                desc: "Entidad sagrada proveniente de una tierra lejana en busca de deidades a las que sintonizar.",
+                lore: "Miembro de una mente colmena devota que viaja entre reinos buscando dioses poderosos tras perder a los suyos propios. Al ser despertada de su sarcófago en el Pozo de Basura, sintoniza al Caballero con los panteones de Hallownest para ascender hasta la cúspide divina.",
+                dream: "...¡Oh dioses de Hallownest! ¡Escuchad nuestra plegaria!..."
+            },
+            // C
+            {
+                letter: "C",
+                name: "Chamán Caracol",
+                category: "NPC / Místico",
+                location: "Cruces Olvidados (Montículo Ancestral)",
+                desc: "Un excéntrico hechicero caracol que enseña al Caballero a canalizar Alma en hechizos.",
+                lore: "Perteneciente a un antiguo linaje de chamanes expertos en la manipulación del Alma. Entrega el Espíritu Vengativo al Caballero y forma parte de una familia dispersa por todo el reino cuyos miembros perecieron intentando dominar distintas artes arcanas.",
+                dream: "...Esa fuerza oscura dentro de ti... es fascinante..."
+            },
+            {
+                letter: "C",
+                name: "Cloth",
+                category: "NPC / Guerrera",
+                location: "Desperdicios Fúngicos / Cuenca Antigua / Jardines de la Reina",
+                desc: "Una valiente cigarra armada con un gran garrote que busca demostrar su coraje.",
+                lore: "A pesar de mostrarse temerosa y esconderse bajo tierra en múltiples ocasiones, Cloth desea honrar la memoria de su difunta compañera Nola muriendo en una batalla gloriosa. Si es rescatada en la Cuenca Antigua, acude en ayuda del Caballero contra el Señor Traidor, sacrificándose con honor.",
+                dream: "...Nola... pronto volveremos a estar juntas..."
+            },
+            {
+                letter: "C",
+                name: "Comepiernas",
+                category: "NPC / Mercader",
+                location: "Desperdicios Fúngicos",
+                desc: "Un extraño insecto medio ciego obsesionado con el olor del Geo y el título de Rey.",
+                lore: "Fabrica y repara los amuletos Frágiles (Corazón, Codicia y Fuerza) con la ilusión de convertirse algún día en el monarca de Hallownest. Si el Caballero lleva equipada la Cresta del Defensor, Comepiernas le ofrece descuentos creyendo que comparte su aroma real; finalmente es devorado por Divine.",
+                dream: "...Todo ese Geo... pronto seré el Rey..."
+            },
+            {
+                letter: "C",
+                name: "Confesor Jiji",
+                category: "NPC / Mística",
+                location: "Boca Sucia (Derecha)",
+                desc: "Una misteriosa criatura encapuchada capaz de invocar los arrepentimientos del Caballero.",
+                lore: "Reside en una cueva cerrada al este de Boca Sucia. A cambio de huevos podridos —que considera un manjar delicioso—, realiza un ritual oscuro para atraer la Sombra del Caballero desde cualquier rincón de Hallownest.",
+                dream: "...Todos cargamos con arrepentimientos que se niegan a morir..."
+            },
+            {
+                letter: "C",
+                name: "Cornifer",
+                category: "NPC / Cartógrafo",
+                location: "Todas las regiones de Hallownest / Boca Sucia",
+                desc: "Un entusiasta explorador que tararea alegremente mientras dibuja mapas de cada región.",
+                lore: "Esposo de Iselda, se mudó a Boca Sucia fascinado por los túneles interminables debajo del pueblo. Se aventura en las zonas más peligrosas e infectadas sin armas, guiado únicamente por su pasión por cartografiar el reino entero.",
+                dream: "...Tantos caminos por trazar... nunca me cansaré de explorar..."
+            },
+            // D
+            {
+                letter: "D",
+                name: "Dama Blanca",
+                category: "Ser Superior / Reina",
+                location: "Jardines de la Reina",
+                desc: "La antigua Reina de Hallownest y consorte del Rey Pálido, ahora atada por sus propias raíces.",
+                lore: "Un Ser Superior de naturaleza arbórea y crecimiento incontrolable. Cómplice del plan del Rey Pálido para crear a los recipientes del Abismo, se recluyó en los Jardines de la Reina y restringió su propio cuerpo por remordimiento, esperando entregar la mitad del Alma de Rey al recipiente elegido.",
+                dream: "...Perdóname, pequeño... era el único camino que conocíamos..."
+            },
+            {
+                letter: "D",
+                name: "Descendiente del traidor",
+                category: "Espíritu / Hija del Señor Traidor",
+                location: "Jardines de la Reina",
+                desc: "La difunta hija del Señor Traidor, cuyo espíritu reposa junto a su tumba.",
+                lore: "Su padre rechazó su amor hacia una guerrera de la tribu Mantis (Ze'mer, la Doliente Gris), lo que desencadenó una tragedia familiar. Tras su muerte, su sepulcro en los Jardines de la Reina espera la delicada Flor Delicada que su amada intenta enviarle.",
+                dream: "...Mi amor... incluso más allá de la muerte te espero..."
+            },
+            {
+                letter: "D",
+                name: "Divine",
+                category: "NPC / Miembro de la Compañía",
+                location: "Boca Sucia (Carpa secundaria de Grimm)",
+                desc: "Una grotesca y glotona dama de la Compañía de Grimm que devora amuletos frágiles.",
+                lore: "Fascinada por los aromas intensos, consume los amuletos frágiles de Comepiernas para digerirlos y regurgitarlos transformados en versiones Irrompibles a cambio de grandes sumas de Geo. También devora al propio Comepiernas si este viaja hasta su tienda.",
+                dream: "...¡Qué aroma tan delicioso! ¡Dámelo para probarlo!..."
+            },
+            {
+                letter: "D",
+                name: "Doliente Gris",
+                category: "NPC / Antigua Caballera (Ze'mer)",
+                location: "Tierras del Reposo",
+                desc: "Una de los Cinco Grandes Caballeros de Hallownest, consumida por el duelo.",
+                lore: "Proveniente de tierras lejanas más allá del reino, Ze'mer se enamoró de la hija del Señor Traidor. Tras la muerte de su amada, vive aislada lamentando su pérdida y encomienda al Caballero llevar una Flor Delicada hasta su tumba sin que reciba un solo rasguño.",
+                dream: "...Le'mer... por favor lleva esta flor hasta ella..."
+            },
+            // E
+            {
+                letter: "E",
+                name: "El Cazador",
+                category: "NPC / Depredador",
+                location: "Senda Verde",
+                desc: "Una enorme criatura oculta en la maleza que entrega el Diario del Cazador.",
+                lore: "Un depredador solitario que ha pasado toda su vida acechando y estudiando a cada bestia de Hallownest. Aunque aparenta ser un monstruo temible, respeta profundamente a quienes demuestran habilidad para sobrevivir y caza por instinto puro, sin sucumbir a la Infección.",
+                dream: "...Cazar o ser cazado... esa es la única verdad..."
+            },
+            {
+                letter: "E",
+                name: "El último ciervo",
+                category: "NPC / Transporte",
+                location: "Estaciones de Ciervo de Hallownest",
+                desc: "El último miembro activo de los ciervos gigantes que transportaban viajeros por el reino.",
+                lore: "Durante décadas recorrió los túneles vacíos esperando el sonido de las campanas de estación. Al reabrir las vías junto al Caballero, recupera sus recuerdos del pasado glorioso de Hallownest y finalmente descubre el Nido de Ciervos, hallando esperanza de que su especie siga viva.",
+                dream: "...Mientras suene una campana, seguiré corriendo..."
+            },
+            {
+                letter: "E",
+                name: "Emilitia eterna",
+                category: "NPC / Noble",
+                location: "Ciudad de Lágrimas",
+                desc: "Una aristócrata egoísta que se ríe de la caída de los demás nobles de la capital.",
+                lore: "Expulsada de la alta sociedad de la Ciudad de Lágrimas antes del colapso, sobrevivió encerrada en sus aposentos mientras sus antiguos compañeros sucumbían a la Infección. Disfruta cruelmente de su fortuna solitaria.",
+                dream: "...¡Ja, ja! Todos ellos muertos y yo sigo aquí..."
+            },
+            // F
+            {
+                letter: "F",
+                name: "Fabricante de máscaras",
+                category: "NPC / Artesano Ancestral",
+                location: "Nido Profundo",
+                desc: "Un misterioso artesano de múltiples caras que talla máscaras en las profundidades.",
+                lore: "Una entidad enigmática que comprende la naturaleza de los recipientes y del Rey Pálido. Explica que las máscaras otorgan identidad y foco a quienes carecen de rostro, y cambia de expresión según se hable con él o se golpee su máscara con el Aguijón Onírico.",
+                dream: "...Un rostro para cada propósito... incluso para quienes no tienen mente..."
+            },
+            {
+                letter: "F",
+                name: "Forjaguijones",
+                category: "NPC / Artesano",
+                location: "Ciudad de Lágrimas / Senda Verde",
+                desc: "El maestro herrero dedicado toda su vida a forjar el aguijón perfecto.",
+                lore: "Trabaja incansablemente en su taller en el extremo oeste de la Ciudad de Lágrimas mejorando el aguijón del Caballero con Mineral Pálido. Al completar el Aguijón Puro, pide ser derribado con su propia obra maestra; si el Caballero le perdona la vida, encuentra un nuevo propósito pintando junto al Maestro Sheo.",
+                dream: "...El filo perfecto... toda mi vida dedicada a este instante..."
+            },
+            // G
+            {
+                letter: "G",
+                name: "Grimm",
+                category: "Jefe / Maestro de la Compañía",
+                location: "Boca Sucia (Carpa Principal)",
+                desc: "El carismático y teatral líder de la Compañía de Grimm.",
+                lore: "Una entidad vinculada al Corazón de la Pesadilla que viaja por reinos caídos para recolectar llamas escarlata a través de su vástago (el Niño de Grimm). El ritual culmina en un duelo ardiente donde Grimm se sacrifica para renacer en una nueva encarnación.",
+                dream: "...Danza conmigo, pequeño recipiente, en la luz escarlata..."
+            },
+            {
+                letter: "G",
+                name: "Grimmsteed",
+                category: "Criatura / Bestia de Carga",
+                location: "Acantilados Aulladores / Boca Sucia",
+                desc: "Las silenciosas criaturas corceles que arrastran las caravanas de la Compañía de Grimm.",
+                lore: "Bestias sombrías con máscaras similares a las de la compañía que permanecen inmóviles junto a las tiendas en Boca Sucia tras ser invocada la troupe desde la linterna de los Acantilados Aulladores.",
+                dream: "...Silencio en la noche... aguardando el final de la función..."
+            },
+            // H
+            {
+                letter: "H",
                 name: "Hornet",
-                category: "Protectora y Aliada",
-                desc: "La veloz guardiana de las ruinas de Hallownest que combate con aguja y seda.",
-                lore: "Hija de Herrah la Bestia y el Rey Pálido. Es la protectora que examina a cada recipiente para comprobar si poseen la fuerza necesaria para afrontar el destino del reino.",
-                dream: "...¿Posees la fuerza para continuar con este fardo?..."
+                category: "Jefe / Protectora de Hallownest",
+                location: "Senda Verde / Límite del Reino / Templo del Huevo Negro",
+                desc: "La ágil y letal guardiana de las ruinas del reino, armada con aguja e hilo.",
+                lore: "Hija del Rey Pálido y Herrah la Bestia, nacida del pacto que convirtió a su madre en Soñadora. Protege el legado de Hallownest poniendo a prueba la fuerza y voluntad del Caballero antes de ayudarlo a enfrentar al Caballero Vacío y al Destello.",
+                dream: "...No dejaré que este reino caiga en manos débiles..."
+            },
+            // I
+            {
+                letter: "I",
+                name: "Iselda",
+                category: "NPC / Comerciante",
+                location: "Boca Sucia",
+                desc: "Antigua guerrera que ahora atiende la tienda de mapas junto a su esposo Cornifer.",
+                lore: "Colgó su aguijón para llevar una vida tranquila en Boca Sucia vendiendo brújulas, plumas y marcadores mientras Cornifer explora el subsuelo, aunque confiesa echar de menos la emoción del combate.",
+                dream: "...Bapanada... a veces extraño el sonido de mi aguijón..."
+            },
+            // L
+            {
+                letter: "L",
+                name: "Lemm",
+                category: "NPC / Buscador de Reliquias",
+                location: "Ciudad de Lágrimas",
+                desc: "Un historiador apasionado que colecciona reliquias antiguas de Hallownest.",
+                lore: "Encerrado en su tienda en la capital inundada, estudia los Diarios del Errante, Sellos de Hallownest, Ídolos del Rey y Huevos Arcanos para reconstruir la historia olvidada del reino y el reinado del Rey Pálido.",
+                dream: "...Cada objeto guarda una historia que el tiempo intentó borrar..."
+            },
+            // M
+            {
+                letter: "M",
+                name: "Maestro de Aguijones Mato",
+                category: "NPC / Maestro del Aguijón",
+                location: "Acantilados Aulladores",
+                desc: "El más entusiasta de los tres hermanos discípulos del Gran Maestro Sly.",
+                lore: "Vive aislado en los Acantilados Aulladores donde enseña al Caballero el Arte del Aguijón 'Corte Ciclón'. Valora la hermandad por encima de la técnica y considera al Caballero su propio discípulo.",
+                dream: "...¡Juntos somos invencibles, mi querido alumno!..."
             },
             {
-                name: "El Destello (The Radiance)",
-                category: "Diosa / Jefe Final",
-                desc: "La luz primordial y creadora de la tribu de las Polillas.",
-                lore: "Al ser olvidada cuando los insectos comenzaron a adorar al Rey Pálido, desató su furia en forma de una Infección anaranjada que ataca los sueños y deforma las mentes.",
-                dream: "...¡NO SERÉ OLVIDADA!..."
+                letter: "M",
+                name: "Maestro de Aguijones Oro",
+                category: "NPC / Maestro del Aguijón",
+                location: "Límite del Reino",
+                desc: "El hermano más reservado y codicioso de los Maestros del Aguijón.",
+                lore: "Tras una disputa con su hermano Mato, se retiró al extremo sur del Límite del Reino. Exige Geo a cambio de enseñar el 'Corte Rápido', aunque en el fondo guarda respeto por su antiguo maestro Sly.",
+                dream: "...No necesito la compasión de mis hermanos..."
             },
             {
-                name: "Quirrel",
-                category: "NPC / Aliado",
-                desc: "Un viajero erudito que porta la máscara de Monomon.",
-                lore: "Antiguo ayudante de Monomon la Maestra. Salió de Hallownest perdiendo sus recuerdos, pero regresó por instinto para cumplir su misión de romper el sello del Archivo.",
-                dream: "...El agua de este lago es tan pacífica... Mi tarea está cumplida..."
+                letter: "M",
+                name: "Maestro de Aguijones Sheo",
+                category: "NPC / Maestro del Aguijón y Pintor",
+                location: "Senda Verde",
+                desc: "El hermano que abandonó el camino de la espada para dedicarse a la pintura.",
+                lore: "Considerado el más talentoso de los discípulos de Sly, dejó las armas para vivir en paz en una cabaña de Senda Verde creando esculturas y pinturas. Enseña el 'Gran Corte' y entabla amistad con el Forjaguijones.",
+                dream: "...Crear es mucho más difícil que destruir..."
             },
             {
-                name: "Señores de las Mantis",
-                category: "Jefes de Tribu",
-                desc: "Tres hermanas guerreras que comandan a la tribu Mantis.",
-                lore: "Rechazaron tanto el mandato del Rey Pálido como la Infección. Al ser derrotadas en duelo de honor, la tribu entera respetará al Caballero.",
-                dream: "...Honor... Respeto al verdadero guerrero..."
+                letter: "M",
+                name: "Matrona",
+                category: "NPC / Partera de Nido Profundo",
+                location: "Nido Profundo (Pueblo Distante)",
+                desc: "Una inquietante criatura alargada que cuidó de los habitantes de Nido Profundo.",
+                lore: "Antigua cuidadora de la prole de Nido Profundo que conserva recuerdos sobre Herrah la Bestia, Hornet y la llegada de la Infección. Al hablar con ella muestra un hambre insaciable, intentando devorar al Caballero tras contarle sus secretos.",
+                dream: "...Tan tierno y pequeño... qué buen bocado serías..."
             },
             {
-                name: "Zote el Invencible",
-                category: "NPC Comediante",
-                desc: "Un viajero fanfarrón que presume de 57 preceptos falsos.",
-                lore: "Armado con su aguijón de madera 'Zu', vaga metiéndose en apuros de los que siempre debe ser rescatado.",
-                dream: "...¡Soy Zote! ¡El más grande de los héroes!..."
+                letter: "M",
+                name: "Millibelle",
+                category: "NPC / Banquera Estafadora",
+                location: "Cañón de Niebla / Casa del Placer",
+                desc: "Una insecto aparentemente amable que ofrece guardar el Geo del Caballero.",
+                lore: "Monta un puesto bancario en el Cañón de Niebla prometiendo seguridad financiera. Sin embargo, en cuanto el Caballero deposita más de 2500 de Geo, huye con todo el dinero hacia las aguas termales de la Casa del Placer en la Ciudad de Lágrimas.",
+                dream: "...¡Qué fácil es engañar a los viajeros confiados!..."
             },
             {
+                letter: "M",
+                name: "Monomon la Maestra",
+                category: "Soñadora",
+                location: "Cañón de Niebla (Archivos de la Maestra)",
+                desc: "Una de los tres Soñadores que sellan el Templo del Huevo Negro.",
+                lore: "La mente más brillante de Hallownest y creadora de los Archivos. Aceptó entrar en un sueño eterno para contener al Destello, pero al notar que el sello fallaba, dejó su máscara al cuidado de Quirrel para que el sello pudiera romperse y encontrar una solución definitiva.",
+                dream: "...Por el bien de Hallownest... el sello debe romperse..."
+            },
+            {
+                letter: "M",
                 name: "Myla",
-                category: "NPC Trágico",
-                desc: "Una alegre minera en los Cruces Olvidados.",
-                lore: "Canta alegremente mientras pica cristales hasta que la Infección del Destello ataca su mente gradualmente, convirtiéndola en un enemigo hostil.",
-                dream: "...Bury the bones... deeply below..."
+                category: "NPC / Minera",
+                location: "Cruces Olvidados",
+                desc: "Una alegre minera que cantaba mientras picaba cristales en los Cruces Olvidados.",
+                lore: "Uno de los personajes más trágicos del juego. Al principio recibe al Caballero con canciones optimistas, pero conforme avanza la Infección su mente se fragmenta hasta perder toda cordura y atacar al jugador.",
+                dream: "...Cava profundo... la luz brilla dentro de la piedra..."
+            },
+            // N
+            {
+                letter: "N",
+                name: "Niña Azul Joni",
+                category: "Espíritu / Hereje",
+                location: "Acantilados Aulladores (Reposo de Joni)",
+                desc: "Una bondadosa criatura vinculada a la Saviavida (Lifeblood).",
+                lore: "Considerada una hereje por el reino debido a su conexión con la sustancia azul llamada Saviavida. Tras su muerte, su espíritu otorga la Bendición de Joni, transformando toda la salud del portador en máscaras azules.",
+                dream: "...La vida azul fluye suave y sin dolor..."
             },
             {
-                name: "Falso Caballero",
-                category: "Jefe",
-                desc: "Un pequeño gusano que viste una pesada armadura robada.",
-                lore: "Deseaba proteger a sus iguales, pero la desesperación y la Infección impulsaron su locura usando una gran maza de combate.",
-                dream: "...Solo quería que todos estuviéramos a salvo..."
+                letter: "N",
+                name: "Nymm",
+                category: "NPC / Músico Liberado",
+                location: "Boca Sucia",
+                desc: "La verdadera identidad de Brumm tras destruir la linterna de la Compañía de Grimm.",
+                lore: "Al romper el ciclo de la pesadilla junto al Caballero, Brumm recupera su libertad y aparece en Boca Sucia como Nymm, tocando alegres melodías con su acordeón y entregando el amuleto Melodía Despreocupada.",
+                dream: "...Por fin una canción libre de cadenas y fuego..."
+            },
+            // P
+            {
+                letter: "P",
+                name: "Padre Larva",
+                category: "NPC / Patriarca",
+                location: "Cruces Olvidados",
+                desc: "El anciano patriarca que llora desconsoladamente por sus 46 larvas capturadas.",
+                lore: "Recompensa generosamente con Geo, minerales y amuletos cada vez que el Caballero rescata a sus crías encerradas en frascos por todo Hallownest. Al reunirlas a todas, las engulle para actuar como capullo vivo en su metamorfosis hacia larvamoscas.",
+                dream: "...Mis pequeños... al fin crecen dentro de mí..."
+            },
+            {
+                letter: "P",
+                name: "Pequeño Insensato",
+                category: "NPC / Gladiador",
+                location: "Límite del Reino (Coliseo de los Insensatos)",
+                desc: "Un diminuto luchador encadenado en la sala de descanso del Coliseo.",
+                lore: "Observa con admiración y desprecio a quienes entran en la arena buscando gloria y Geo. Su presencia refleja la obsesión fútil de los guerreros que combaten eternamente por el entretenimiento del público.",
+                dream: "...Otro insensato más buscando gloria en el polvo..."
+            },
+            {
+                letter: "P",
+                name: "Profeta del Musgo",
+                category: "NPC / Predicador",
+                location: "Jardines de la Reina",
+                desc: "Un predicador musgoso que adora la luz de la Infección.",
+                lore: "Rodeado de seguidores en los Jardines de la Reina, predica que la luz anaranjada del Destello es una bendición que traerá unidad al reino, hasta que finalmente sucumbe por completo a la misma plaga que veneraba.",
+                dream: "...¡Abrace la luz! ¡Deja que llene tu mente vacía!..."
+            },
+            // Q
+            {
+                letter: "Q",
+                name: "Quirrel",
+                category: "NPC / Explorador y Protector",
+                location: "Templo del Huevo Negro / Lago Azul / Múltiples regiones",
+                desc: "Un sabio y amable viajero que porta la máscara de Monomon sobre su cabeza.",
+                lore: "Antiguo aprendiz de Monomon la Maestra. Tras perder sus recuerdos fuera de Hallownest, regresó guiado por un llamado instintivo. Ayuda al Caballero a derrotar a Uumuu y cumple su deber devolviendo la máscara a Monomon, tras lo cual descansa en paz junto al Lago Azul.",
+                dream: "...Qué privilegio haber presenciado este mundo dos veces..."
+            },
+            // R
+            {
+                letter: "R",
+                name: "Revek",
+                category: "Espíritu / Guardián",
+                location: "Tierras del Reposo (Claro de los Espíritus)",
+                desc: "El antiguo protector espectral de los espíritus que descansan en el Claro.",
+                lore: "Fiel guardián jurado a proteger la paz de los muertos en las Tierras del Reposo. Si el Caballero intenta absorber con el Aguijón Onírico a alguno de los espíritus protegidos, Revek lo atacará sin descanso hasta que abandone el santuario.",
+                dream: "...Mientras yo vigile, nadie perturbará su descanso..."
+            },
+            {
+                letter: "R",
+                name: "Rey Pálido",
+                category: "Ser Superior / Monarca",
+                location: "Palacio Blanco",
+                desc: "El antiguo soberano de Hallownest, reencarnación de un Wyrm primordial.",
+                lore: "Un Ser Superior que abandonó su colosal cuerpo de Wyrm para adoptar forma de insecto y otorgar mente e inteligencia a los habitantes de Hallownest. Para detener al Destello, sacrificó a incontables hijos suyos en el Abismo buscando crear un recipiente puro, antes de desaparecer con su palacio en el reino de los sueños.",
+                dream: "...Ningún coste es demasiado grande..."
+            },
+            // S
+            {
+                letter: "S",
+                name: "Salubra",
+                category: "NPC / Amante de los Amuletos",
+                location: "Cruces Olvidados",
+                desc: "Una alegre comerciante obsesionada con el poder y la belleza de los amuletos.",
+                lore: "Vende amuletos y muescas adicionales en su tienda al sureste de los Cruces Olvidados. Cuando el Caballero reúne todos los amuletos del reino, Salubra le otorga su bendición, recargando su Alma cada vez que descansa en un banco.",
+                dream: "...¡Oh, cuántos amuletos maravillosos llevas contigo!..."
+            },
+            {
+                letter: "S",
+                name: "Seres Superiores",
+                category: "Entidades Divinas / Lore",
+                location: "Todo Hallownest",
+                desc: "Deidades primordiales de inmenso poder que moldearon la historia del reino.",
+                lore: "Incluyen entidades como el Rey Pálido, la Dama Blanca, El Destello, Unn, el Corazón de la Pesadilla y el Señor de las Sombras. Poseen la capacidad de otorgar consciencia, gobernar sueños o controlar fuerzas elementales como la luz y el Vacío.",
+                dream: "...Más allá de los mortales, las voluntades antiguas chocan..."
+            },
+            {
+                letter: "S",
+                name: "Señor Seta",
+                category: "NPC Críptico",
+                location: "Desperdicios Fúngicos / Múltiples zonas",
+                desc: "Un extraño hongo parlante que viaja por Hallownest pronunciando profecías.",
+                lore: "Comparte la mente colectiva de la tribu fúngica, pero se mueve de forma independiente buscando el momento en que el reino cambie de era. Al encontrarlo en sus siete ubicaciones con el amuleto Esporas con Hongos equipado, asciende hacia los cielos desbloqueando una escena secreta.",
+                dream: "...Los tiempos cambian... el Wyrm perece y nace una nueva era..."
+            },
+            {
+                letter: "S",
+                name: "Sly",
+                category: "NPC / Comerciante y Gran Maestro",
+                location: "Cruces Olvidados / Boca Sucia / Hogar de Dioses",
+                desc: "Un diminuto mercader avaro que en realidad es el legendario Gran Maestro del Aguijón.",
+                lore: "Rescatado de un trance infeccioso en los Cruces Olvidados, abre una tienda en Boca Sucia donde vende llaves y fragmentos. En secreto es el maestro que entrenó a Oro, Mato y Sheo, y entrega la gloria del Maestro del Aguijón cuando el Caballero aprende todas las artes.",
+                dream: "...Geo... ¡Patamas Geo!..."
+            },
+            // T
+            {
+                letter: "T",
+                name: "Tiso",
+                category: "NPC / Aventurero Arrogante",
+                location: "Boca Sucia / Cruces Olvidados / Lago Azul / Coliseo",
+                desc: "Un guerrero orgulloso que porta un escudo buscando el desafío definitivo.",
+                lore: "Desprecia los aguijones y presume de su escudo letal mientras viaja hacia el Coliseo de los Insensatos. Trágicamente, perece en la arena aplastado por un Mawlek Incubador, terminando su cadáver arrojado en el Límite del Reino.",
+                dream: "...Nadie en este reino patético está a mi altura..."
+            },
+            {
+                letter: "T",
+                name: "Trematodo Ermitaño",
+                category: "NPC / Criatura de las Alcantarillas",
+                location: "Canales Reales (Pozo de Basura)",
+                desc: "Un trematodo pacífico que vive aislado entre los desechos bajo la capital.",
+                lore: "A diferencia de los violentos trematodos infectados de los Canales Reales, esta criatura conserva lucidez y observa con curiosidad al Buscador de Dioses encerrado en su sarcófago entre la basura.",
+                dream: "...Aquí abajo todo fluye y todo se olvida..."
+            },
+            {
+                letter: "T",
+                name: "Tuk",
+                category: "NPC / Carroñero",
+                location: "Canales Reales",
+                desc: "Una criatura solitaria escondida en las tuberías que vende huevos podridos.",
+                lore: "Recolecta objetos perdidos entre los desperdicios de la Ciudad de Lágrimas y vende huevos podridos a cambio de Geo, esperando el regreso de una compañera suya que nunca vuelve.",
+                dream: "...¿Dónde estará? Seguro que pronto volverá a buscarme..."
+            },
+            // U
+            {
+                letter: "U",
+                name: "Unn",
+                category: "Ser Superior",
+                location: "Senda Verde (Lago de Unn)",
+                desc: "La antigua deidad creadora de la vegetación y la tribu musgosa de Senda Verde.",
+                lore: "Un Ser Superior con forma de babosa gigante que soñó toda la flora y los habitantes de Senda Verde hasta darles existencia. Debilitada por el paso del tiempo y la Infección, emerge de las aguas ácidas del Lago de Unn para otorgar su amuleto Forma de Unn al Caballero.",
+                dream: "...La llamada de los sueños se vuelve cada vez más débil..."
+            },
+            // V
+            {
+                letter: "V",
+                name: "Vidente",
+                category: "NPC / Última Polilla",
+                location: "Tierras del Reposo",
+                desc: "La última superviviente de la antigua tribu de las Polillas.",
+                lore: "Guardián de la memoria de su pueblo, entrega el Aguijón Onírico al Caballero y lo guía en la recolección de Esencia. Reconoce el pecado de su tribu al abandonar a su creador (El Destello) por el Rey Pálido, y finalmente se disuelve en luz tras despertar el Aguijón Onírico.",
+                dream: "...No nos olvides... la luz que alguna vez fuimos..."
+            },
+            {
+                letter: "V",
+                name: "Viejo Insecto",
+                category: "NPC / Anciano de Boca Sucia",
+                location: "Boca Sucia",
+                desc: "El habitante más anciano de Boca Sucia que da la bienvenida a los viajeros.",
+                lore: "Nació después de que las puertas de Hallownest fueran selladas, por lo que nunca conoció el esplendor de la ciudad subterránea. Permanece junto al pozo ofreciendo consejos prudentes y recibiendo con gratitud la Flor Delicada.",
+                dream: "...¿Por qué todos sienten esa necesidad de bajar a la oscuridad?..."
+            },
+            // W
+            {
+                letter: "W",
+                name: "Willoh",
+                category: "NPC / Viajera",
+                location: "Estación de la Reina",
+                desc: "Una insecto de cuello larguísimo que se alimenta de hongos en la Estación de la Reina.",
+                lore: "Aunque parece afable mientras mastica hongos en el techo de la estación, en su habitación secreta guarda los restos de viajeros devorados y sus pensamientos revelan que contempla comerse al Caballero.",
+                dream: "...Qué apetitoso parece ese pequeño viajero..."
             }
         ];
 
@@ -650,66 +1124,76 @@
         const charmsData = [
             { id: 1, name: "Brújula Caprichosa", cost: 1, effect: "Revela la posición exacta del jugador en el mapa." },
             { id: 2, name: "Atrapaalmas", cost: 2, effect: "Consigue más Alma al golpear enemigos con el aguijón." },
-            { id: 3, name: "Piedra de Shaman", cost: 3, effect: "Aumenta drásticamente el tamaño y daño de todos los hechizos." },
-            { id: 4, name: "Devorador de Almas", cost: 3, effect: "Otorga una cantidad masiva de Alma por cada impacto." },
-            { id: 5, name: "Canto del Larva", cost: 1, effect: "Otorga Alma cada vez que recibes daño." },
-            { id: 6, name: "Elegía de Larva", cost: 3, effect: "Dispara rayos de energía pura con el aguijón si tu vida está al máximo." },
-            { id: 7, name: "Corazón de Matriz", cost: 2, effect: "Aumenta la salud en 2 máscaras." },
-            { id: 8, name: "Corazón Irrompible", cost: 2, effect: "Aumenta la salud en 2 máscaras y no se rompe al morir." },
-            { id: 9, name: "Codicia Irrompible", cost: 2, effect: "Los enemigos sueltan más Geo al morir." },
-            { id: 10, name: "Fuerza Irrompible", cost: 3, effect: "Aumenta el daño del aguijón en un 50% permanentemente." },
-            { id: 11, name: "Cresta del Defensor", cost: 1, effect: "Emite una nube tóxica que daña a los enemigos cercanos." },
-            { id: 12, name: "Nido de Flukenest", cost: 3, effect: "Reemplaza el Espíritu Vengativo por una bandada de crías explosivas." },
-            { id: 13, name: "Espinas de Agonía", cost: 1, effect: "Lanza zarzas espinosas al recibir daño para golpear rivales." },
-            { id: 14, name: "Afilador de Corazón", cost: 2, effect: "Aumenta la velocidad de concentración de Alma." },
+            { id: 3, name: "Piedra de Chamán", cost: 3, effect: "Aumenta drásticamente el tamaño y daño de todos los hechizos." },
+            { id: 4, name: "Devorador de Almas", cost: 4, effect: "Otorga una cantidad masiva de Alma por cada impacto." },
+            { id: 5, name: "Canción de Larvas", cost: 1, effect: "Otorga Alma cada vez que recibes daño." },
+            { id: 6, name: "Elegía de Larvamosca", cost: 3, effect: "Dispara rayos de energía pura con el aguijón si tu vida está al máximo." },
+            { id: 7, name: "Corazón Frágil / Irrompible", cost: 2, effect: "Aumenta la salud en 2 máscaras." },
+            { id: 8, name: "Codicia Frágil / Irrompible", cost: 2, effect: "Los enemigos sueltan más Geo al morir." },
+            { id: 9, name: "Fuerza Frágil / Irrompible", cost: 3, effect: "Aumenta el daño del aguijón en un 50%." },
+            { id: 10, name: "Blasón del Defensor", cost: 1, effect: "Emite una nube tóxica que daña a los enemigos cercanos." },
+            { id: 11, name: "Nido de Trematodos", cost: 3, effect: "Reemplaza el Espíritu Vengativo por una bandada de crías explosivas." },
+            { id: 12, name: "Espinas de Agonía", cost: 1, effect: "Lanza zarzas espinosas al recibir daño para golpear rivales." },
+            { id: 13, name: "Concentración Rápida", cost: 3, effect: "Aumenta la velocidad de concentración de Alma." },
+            { id: 14, name: "Concentración Profunda", cost: 4, effect: "Cura dos máscaras a la vez, pero reduce la velocidad de concentración." },
             { id: 15, name: "Marca de Orgullo", cost: 3, effect: "Aumenta enormemente el alcance del aguijón." },
             { id: 16, name: "Largoaguijón", cost: 2, effect: "Aumenta ligeramente el alcance del aguijón." },
             { id: 17, name: "Furia de los Caídos", cost: 2, effect: "Multiplica el daño cuando solo te queda 1 máscara." },
             { id: 18, name: "Sombra Afilada", cost: 2, effect: "Inflige daño al atravesar enemigos con el Dash Sombra." },
-            { id: 19, name: "Maestro de las Aguas (Dashmaster)", cost: 2, effect: "Permite impulsarse más rápido y hacia abajo." },
-            { id: 20, name: "Maestro del Salto", cost: 2, effect: "Aumenta la velocidad al esprintar." },
-            { id: 21, name: "Glotón de Alma", cost: 2, effect: "Aumenta la recuperación de Alma." },
-            { id: 22, name: "Caparazón de Baldur", cost: 2, effect: "Crea un escudo protector al concentrar Alma." },
-            { id: 23, name: "Útero Resplandeciente", cost: 2, effect: "Consume Alma para engendrar crías voladoras que atacan." },
-            { id: 24, name: "Aroma del Defensor", cost: 1, effect: "Nube de hedor continuo." },
-            { id: 25, name: "Bendición de Salubra", cost: 1, effect: "Recupera Alma al descansar en bancos." },
-            { id: 26, name: "Piedra Onírica", cost: 1, effect: "Acelera la velocidad del Aguijón Onírico." },
-            { id: 27, name: "Canto de Espinas", cost: 1, effect: "Reacción defensiva con vegetación." },
+            { id: 19, name: "Maestro de las Embestidas", cost: 2, effect: "Permite impulsarse más rápido y hacia abajo." },
+            { id: 20, name: "Maestro de Sprint", cost: 1, effect: "Aumenta la velocidad al correr por el suelo." },
+            { id: 21, name: "Tuercehechizos", cost: 2, effect: "Reduce el coste de Alma necesario para lanzar hechizos." },
+            { id: 22, name: "Coraza de Baldur", cost: 2, effect: "Crea un escudo protector al concentrar Alma." },
+            { id: 23, name: "Útero Brillante", cost: 2, effect: "Consume Alma para engendrar crías voladoras que atacan." },
+            { id: 24, name: "Corazón de Saviavida", cost: 2, effect: "Añade dos máscaras azules de Saviavida al descansar." },
+            { id: 25, name: "Núcleo de Saviavida", cost: 3, effect: "Añade cuatro máscaras azules de Saviavida al descansar." },
+            { id: 26, name: "Bendición de Joni", cost: 4, effect: "Convierte toda tu salud en máscaras de Saviavida, impidiendo curarte con Alma." },
+            { id: 27, name: "Sangrecolmena", cost: 4, effect: "Regenera pasivamente la última máscara de salud perdida." },
             { id: 28, name: "Corazón del Vacío", cost: 0, effect: "Unifica el Vacío bajo la voluntad del portador. Necesario para el final verdadero." },
             { id: 29, name: "Niño de Grimm", cost: 2, effect: "Invoca un secuaz de fuego que ataca enemigos." },
-            { id: 30, name: "Melodía de Troupe", cost: 2, effect: "Otorga probabilidad de ignorar el daño." },
-            { id: 31, name: "Alma de Rey", cost: 4, effect: "Genera Alma pasivamente de forma continua." },
-            { id: 32, name: "Cuerda de Viajero", cost: 1, effect: "Atrae el Geo tirado en el suelo automáticamente." },
-            { id: 33, name: "Coraza Pesada", cost: 2, effect: "Evita el retroceso al recibir golpes." },
-            { id: 34, name: "Gota de Sangre", cost: 2, effect: "Mayor velocidad de ataque." },
+            { id: 30, name: "Melodía Despreocupada", cost: 3, effect: "Otorga probabilidad de bloquear el daño recibido." },
+            { id: 31, name: "Alma del Rey", cost: 5, effect: "Genera Alma pasivamente de forma continua." },
+            { id: 32, name: "Enjambre Recolector", cost: 1, effect: "Atrae el Geo tirado en el suelo automáticamente." },
+            { id: 33, name: "Cuerpo Firme", cost: 1, effect: "Evita el retroceso al golpear enemigos con el aguijón." },
+            { id: 34, name: "Corte Rápido", cost: 3, effect: "Permite atacar mucho más rápido con el aguijón." },
             { id: 35, name: "Escudo Onírico", cost: 3, effect: "Un escudo giratorio protege al jugador y daña a los enemigos." },
-            { id: 36, name: "Sombra Voladora", cost: 2, effect: "Dash mejorado." },
-            { id: 37, name: "Canto de Alma", cost: 2, effect: "Efecto místico de Alma." },
-            { id: 38, name: "Coraza de Oro", cost: 2, effect: "Defensa contra golpes fuertes." },
-            { id: 39, name: "Runa de Niebla", cost: 2, effect: "Poder de niebla misterioso." },
-            { id: 40, name: "Esencia Pura", cost: 3, effect: "Brillo de alma supremo." }
+            { id: 36, name: "Portador Onírico", cost: 1, effect: "Acelera la carga del Aguijón Onírico y otorga más Alma." },
+            { id: 37, name: "Esporas con Hongos", cost: 1, effect: "Emite una nube de esporas dañinas al concentrar Alma." },
+            { id: 38, name: "Forma de Unn", cost: 2, effect: "Permite moverse mientras concentras Alma." },
+            { id: 39, name: "Gloria del Maestro del Aguijón", cost: 1, effect: "Aumenta la maestría y velocidad de carga de las Artes del Aguijón." },
+            { id: 40, name: "Canción de Tejedora", cost: 2, effect: "Invoca pequeñas tejedoras que atacan enemigos." }
         ];
 
         const loreData = [
             {
                 name: "El Origen de la Infección",
                 category: "Historia",
+                location: "Todo Hallownest",
                 desc: "Cómo el rencor del Destello arrasó el reino de Hallownest.",
                 lore: "Cuando el Rey Pálido unificó a las criaturas bajo una misma mente consciente, la antigua diosa polilla fue olvidada. Su rencor se manifestó como una luz anaranjada que penetró en los sueños de los habitantes, pudriendo sus mentes y deformando sus cuerpos."
             },
             {
                 name: "El Experimento del Vacío",
                 category: "Tragedia",
-                desc: "El sacrificio impío del Rey Pálido en el Abismo.",
+                location: "El Abismo",
+                desc: "El sacrificio impío del Rey Pálido en las profundidades.",
                 lore: "Para contener al Destello, el Rey Pálido arrojó a sus propios hijos a las sombras del Abismo. Mezcló su esencia con la sustancia del Vacío buscando crear un ser sin mente, voluntad o voz capaz de contener la plaga eternamente."
+            },
+            {
+                name: "Los Tres Soñadores",
+                category: "Sellos",
+                location: "Templo del Huevo Negro",
+                desc: "Monomon, Lurien y Herrah: los guardianes dormidos del sello.",
+                lore: "Tres figuras clave de Hallownest aceptaron entrar en un sueño eterno para sellar la entrada al Caballero Vacío, manteniendo atrapada la Infección hasta que los sellos comenzaron a debilitarse."
             }
         ];
 
-        /* ESTADO DEL HUD */
+        /* ESTADO DEL HUD Y FILTROS */
         let health = 5;
         let soul = 0;
         let notches = 0;
         let equippedCharms = [];
+        let activeLetter = 'ALL';
 
         function renderHUD() {
             const container = document.getElementById('masksContainer');
@@ -748,26 +1232,78 @@
             playTone(150, 'sawtooth');
         }
 
-        function switchTab(tab) {
+        function switchTab(tab, btnEl) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
             document.getElementById(`tab-${tab}`).classList.add('active');
-            event.target.classList.add('active');
+            if (btnEl) btnEl.classList.add('active');
             playTone(500, 'sine', 0.05);
         }
 
-        function renderContent() {
-            // Personajes
-            document.getElementById('charactersGrid').innerHTML = charactersData.map(item => `
-                <div class="card" onclick="openModal('${item.name}', '${item.category}', \`${item.lore}\`)">
+        function buildAlphaBar() {
+            const letters = ['ALL', ...new Set(charactersData.map(c => c.letter))];
+            const bar = document.getElementById('alphaBar');
+            bar.innerHTML = letters.map(l => `
+                <button class="alpha-btn ${l === activeLetter ? 'active' : ''}" onclick="filterByLetter('${l}', this)">
+                    ${l === 'ALL' ? 'Todos' : l}
+                </button>
+            `).join('');
+        }
+
+        function filterByLetter(letter, btnEl) {
+            activeLetter = letter;
+            document.querySelectorAll('.alpha-btn').forEach(b => b.classList.remove('active'));
+            if (btnEl) btnEl.classList.add('active');
+            playTone(550, 'sine', 0.04);
+            renderCharacters();
+        }
+
+        function renderCharacters() {
+            const q = document.getElementById('globalSearch').value.toLowerCase();
+            const filtered = charactersData.filter(item => {
+                const matchesLetter = activeLetter === 'ALL' || item.letter === activeLetter;
+                const matchesSearch =
+                    item.name.toLowerCase().includes(q) ||
+                    item.category.toLowerCase().includes(q) ||
+                    item.location.toLowerCase().includes(q) ||
+                    item.desc.toLowerCase().includes(q) ||
+                    item.lore.toLowerCase().includes(q);
+                return matchesLetter && matchesSearch;
+            });
+
+            document.getElementById('charCountInfo').innerText = `Mostrando ${filtered.length} de ${charactersData.length} personajes registrados`;
+
+            document.getElementById('charactersGrid').innerHTML = filtered.map(item => `
+                <div class="card" onclick="openCharacterModal('${item.name.replace(/'/g, "\\'")}')">
                     <div>
-                        <span class="card-tag">${item.category}</span>
+                        <div class="card-header-row">
+                            <span class="card-tag">${item.category}</span>
+                            <span class="letter-badge">${item.letter}</span>
+                        </div>
                         <h3>${item.name}</h3>
+                        <p style="color: var(--soul-cyan); font-size: 0.78rem; margin-bottom: 0.5rem;">📍 ${item.location}</p>
                         <p>${item.desc}</p>
                         <div class="dream-quote">${item.dream}</div>
                     </div>
                 </div>
             `).join('');
+        }
+
+        function openCharacterModal(name) {
+            const item = charactersData.find(c => c.name === name);
+            if (!item) return;
+            openModal(
+                item.name,
+                item.category,
+                item.location,
+                `<p style="margin-bottom: 1rem;">${item.lore}</p>
+                 <div class="dream-quote"><strong>Aguijón Onírico:</strong> ${item.dream}</div>`
+            );
+        }
+
+        function renderContent() {
+            buildAlphaBar();
+            renderCharacters();
 
             // Amuletos
             document.getElementById('charmsGrid').innerHTML = charmsData.map(item => `
@@ -775,7 +1311,7 @@
                     <div>
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <h3 style="color: var(--border-gold); font-size: 1.05rem; margin: 0;">${item.name}</h3>
-                            <span style="color: var(--border-gold); font-size: 0.8rem; font-weight: bold;">${item.cost} Muesca${item.cost > 1 ? 's' : ''}</span>
+                            <span style="color: var(--border-gold); font-size: 0.8rem; font-weight: bold;">${item.cost} Muesca${item.cost !== 1 ? 's' : ''}</span>
                         </div>
                         <p style="margin-top: 0.6rem; font-size: 0.85rem; color: var(--text-dim);">${item.effect}</p>
                     </div>
@@ -784,7 +1320,7 @@
 
             // Lore
             document.getElementById('loreGrid').innerHTML = loreData.map(item => `
-                <div class="card" onclick="openModal('${item.name}', '${item.category}', \`${item.lore}\`)">
+                <div class="card" onclick="openModal('${item.name}', '${item.category}', '${item.location}', \`${item.lore}\`)">
                     <div>
                         <span class="card-tag">${item.category}</span>
                         <h3>${item.name}</h3>
@@ -814,9 +1350,10 @@
             document.getElementById('notchCounter').innerText = `Muescas Usadas: ${notches} / 11`;
         }
 
-        function openModal(title, tag, body) {
+        function openModal(title, tag, location, body) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalTag').innerText = tag;
+            document.getElementById('modalMeta').innerHTML = `<span><strong>Ubicación:</strong> ${location}</span>`;
             document.getElementById('modalBody').innerHTML = body;
             document.getElementById('wikiModal').classList.add('open');
             playTone(450, 'triangle');
@@ -832,11 +1369,7 @@
 
         function filterEverything() {
             const q = document.getElementById('globalSearch').value.toLowerCase();
-            document.querySelectorAll('#charactersGrid .card').forEach((el, idx) => {
-                const item = charactersData[idx];
-                const match = item.name.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q);
-                el.style.display = match ? 'flex' : 'none';
-            });
+            renderCharacters();
             document.querySelectorAll('#charmsGrid .charm-card').forEach((el, idx) => {
                 const item = charmsData[idx];
                 const match = item.name.toLowerCase().includes(q) || item.effect.toLowerCase().includes(q);
