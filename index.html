@@ -51,6 +51,92 @@
                 radial-gradient(circle at 50% 100%, #050200 0%, transparent 80%);
         }
 
+        /* Fondo temático de Hallownest (capas de atmósfera + partículas) */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -2;
+            background:
+                radial-gradient(ellipse at 50% 12%, rgba(0, 229, 255, 0.08) 0%, transparent 45%),
+                radial-gradient(ellipse at 20% 75%, rgba(197, 160, 89, 0.07) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(30, 58, 95, 0.22) 0%, transparent 55%),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(197, 160, 89, 0.025) 0px,
+                    rgba(197, 160, 89, 0.025) 1px,
+                    transparent 1px,
+                    transparent 120px
+                );
+            transition: background 0.6s ease;
+        }
+
+        body.infected-mode::before {
+            background:
+                radial-gradient(ellipse at 50% 15%, rgba(255, 102, 0, 0.18) 0%, transparent 50%),
+                radial-gradient(ellipse at 25% 75%, rgba(255, 69, 0, 0.12) 0%, transparent 55%),
+                radial-gradient(ellipse at 80% 65%, rgba(180, 60, 0, 0.14) 0%, transparent 55%),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(255, 102, 0, 0.03) 0px,
+                    rgba(255, 102, 0, 0.03) 1px,
+                    transparent 1px,
+                    transparent 120px
+                );
+        }
+
+        /* Viñeta profunda del Vacío */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            box-shadow: inset 0 0 130px rgba(0, 0, 0, 0.92);
+        }
+
+        /* Capa de esporas flotantes */
+        .ambient-spores {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .spore {
+            position: absolute;
+            bottom: -12px;
+            border-radius: 50%;
+            background: var(--soul-cyan);
+            box-shadow: 0 0 8px var(--soul-cyan);
+            opacity: 0;
+            animation: floatSpore linear infinite;
+        }
+
+        body.infected-mode .spore {
+            background: var(--inf-orange);
+            box-shadow: 0 0 10px var(--inf-orange);
+        }
+
+        @keyframes floatSpore {
+            0% {
+                transform: translateY(0) translateX(0) scale(0.7);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.65;
+            }
+            85% {
+                opacity: 0.35;
+            }
+            100% {
+                transform: translateY(-105vh) translateX(24px) scale(1.15);
+                opacity: 0;
+            }
+        }
+
         header {
             text-align: center;
             padding: 2.5rem 1rem 1.5rem;
@@ -117,6 +203,9 @@
             background: #141c2b;
             border: 2px solid var(--border-ancient);
             clip-path: polygon(50% 0%, 100% 35%, 85% 100%, 15% 100%, 0% 35%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
             transition: 0.3s;
         }
@@ -487,6 +576,7 @@
     </style>
 </head>
 <body>
+<div class="ambient-spores" id="ambientSpores" aria-hidden="true"></div>
 
     <header>
         <h1>Gran Archivo de Hallownest</h1>
@@ -555,7 +645,7 @@
                         <text x="240" y="185" fill="#00e5ff" font-size="12" text-anchor="middle">Senda Verde</text>
                     </g>
 
-                    <g class="map-region-node" onclick="openModal('Cumbre de Cristales', 'Mina', 'Noreste', 'Mina abandonada llena de cristales rosados energetizados.<br><br><strong>Conexiones:</strong> Cruces Olvidados, Tierras del Reposo.<br><strong>Habitantes:</strong> Quirrel (de paso), Guardián del Cristal.')">
+                    <g class="map-region-node" onclick="openModal('Cumbre de los Cristales', 'Mina', 'Noreste', 'Mina abandonada llena de cristales rosados energetizados.<br><br><strong>Conexiones:</strong> Cruces Olvidados, Tierras del Reposo.<br><strong>Habitantes:</strong> Quirrel (de paso), Guardián del Cristal.')">
                         <rect x="490" y="160" width="160" height="40" rx="6" fill="#0c111a" stroke="#232d3f"/>
                         <text x="570" y="185" fill="#ff70a6" font-size="12" text-anchor="middle">Cumbre Cristales</text>
                     </g>
@@ -1377,7 +1467,26 @@
             });
         }
 
+        function createAmbientSpores(count = 28) {
+            const container = document.getElementById('ambientSpores');
+            if (!container) return;
+            container.innerHTML = '';
+
+            for (let i = 0; i < count; i++) {
+                const spore = document.createElement('span');
+                spore.className = 'spore';
+                const size = 2 + Math.random() * 4;
+                spore.style.width = `${size}px`;
+                spore.style.height = `${size}px`;
+                spore.style.left = `${Math.random() * 100}%`;
+                spore.style.animationDuration = `${9 + Math.random() * 12}s`;
+                spore.style.animationDelay = `${Math.random() * 10}s`;
+                container.appendChild(spore);
+            }
+        }
+
         window.onload = () => {
+            createAmbientSpores();
             renderHUD();
             renderContent();
         };
